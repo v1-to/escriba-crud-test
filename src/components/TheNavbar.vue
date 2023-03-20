@@ -5,7 +5,10 @@ import NavbarLinkItem from '@/components/NavbarLinkItem.vue';
 <template>
     <nav>
         <NavbarLinkItem to="/" label="Home"></NavbarLinkItem>
-        <NavbarLinkItem to="/about" label="About"></NavbarLinkItem>
+        <NavbarLinkItem to="/person" label="Pessoas"></NavbarLinkItem>
+        <NavbarLinkItem to="/product" label="Produtos"></NavbarLinkItem>
+        <NavbarLinkItem to="/order" label="Pedidos"></NavbarLinkItem>
+        <NavbarLinkItem to="/about" label="Sobre"></NavbarLinkItem>
     </nav>
 </template>
 

@@ -27,6 +27,7 @@ div.screen {
     div.content {
         width: 85vw;
         height: 100vh;
+        padding: 20px;
     }
 }
 </style>

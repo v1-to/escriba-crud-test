@@ -59,6 +59,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+a {
+  color: var(--color-text);
+}
 a:visited {
-  color: inherit;
+  color: var(--color-text);
 }
