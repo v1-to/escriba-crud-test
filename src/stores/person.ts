@@ -3,17 +3,16 @@ import { ref } from 'vue'
 import $http from '../api'
 
 export type Person = {
-  id: Number
-  nome: String
-  cpf: String
-  dataNascimento: String
+  id: number
+  nome: string
+  cpf: string
+  dataNascimento: string
 }
 
 const RESOURCE_PATH = '/pessoas'
 
 export const usePersonStore = defineStore('person', () => {
   const items = ref<Person[]>([])
-  const item = ref<Person | undefined>()
 
   async function list(): Promise<Person[]> {
     try {
@@ -26,13 +25,11 @@ export const usePersonStore = defineStore('person', () => {
     }
   }
 
-  async function read(id: string): Promise<Person | undefined> {
+  async function read(id: number | string): Promise<Person | undefined> {
     try {
-      const { data } = await $http.get<Person>([RESOURCE_PATH, id].join('/'))
-      item.value = data
+      const { data } = await $http.get<Person>([RESOURCE_PATH, Number(id)].join('/'))
       return data
     } catch (err) {
-      item.value = undefined
       return undefined
     }
   }
