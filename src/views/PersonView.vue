@@ -1,5 +1,8 @@
 <script setup lang="ts">
+import { usePersonStore } from '@/stores/person';
 
+const store = usePersonStore();
+store.list();
 </script>
 
 <template>
