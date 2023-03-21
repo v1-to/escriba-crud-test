@@ -3,7 +3,9 @@
 </script>
 
 <template>
-    PRODUCT
+    <main>
+        PRODUCT
+    </main>
 </template>
 
 <style scoped lang="scss"></style>

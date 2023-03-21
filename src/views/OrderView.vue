@@ -3,7 +3,9 @@
 </script>
 
 <template>
-    ORDER
+    <main>
+        ORDER
+    </main>
 </template>
 
 <style scoped lang="scss"></style>
