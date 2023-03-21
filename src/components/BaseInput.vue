@@ -55,8 +55,8 @@ const maxLength = props.type === 'cpf' ? 14 : Infinity;
     <div :class="['input-wrapper', { 'is-invalid': !isValid }]">
         <span>{{ label }}</span>
         <span v-if="errorMessage" class="error-message">({{ errorMessage }})</span>
-        <input type="text" :placeholder="label" :value="data" @input="$event => $emit('update:data', $event.target.value)"
-            :maxlength="maxLength" />
+        <input type="text" :placeholder="label" :value="data"
+            @input="$event => $emit('update:data', ($event.target as HTMLInputElement).value)" :maxlength="maxLength" />
     </div>
 </template>
 

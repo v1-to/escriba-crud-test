@@ -1,0 +1,7 @@
+version: "3"
+services:
+  vue-app:
+    build: .
+    image: escriba-crud-test
+    ports:
+      - "4173:4173"
