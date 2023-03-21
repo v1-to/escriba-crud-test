@@ -22,7 +22,7 @@ defineProps({
     <div class="select-wrapper">
         <span>{{ label }}</span>
         <select :value="selected" @input="$event => $emit('update:selected', $event.target.value)">
-            <option disabled value="">Please select one</option>
+            <option disabled value="">Selecione um item</option>
             <option :value="value" v-for="({ label, value }, index) in options" :key="index">{{ label }}</option>
         </select>
     </div>
