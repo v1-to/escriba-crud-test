@@ -1,6 +1,13 @@
 <script setup lang="ts">
 import BaseButton from '@/components/BaseButton.vue';
 
+defineProps({
+    canSubmit: {
+        type: Boolean,
+        default: true
+    }
+})
+
 defineEmits(['cancel', 'confirm'])
 </script>
 
@@ -9,7 +16,7 @@ defineEmits(['cancel', 'confirm'])
         <slot></slot>
         <div class="options">
             <BaseButton label="Cancelar" color="#ff686b" @click="$emit('cancel')"></BaseButton>
-            <BaseButton label="Confirmar" color="#84dcc6" @click="$emit('confirm')"></BaseButton>
+            <BaseButton label="Confirmar" color="#84dcc6" @click="$emit('confirm')" :disabled="!canSubmit"></BaseButton>
         </div>
     </form>
 </template>
