@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch, type PropType } from "vue";
+import { onMounted, ref, watch, type PropType } from "vue";
 import { validateCPF } from "@/helpers/validation";
 
 const errorMessage = ref('');
@@ -31,6 +31,8 @@ const props = defineProps({
 const emit = defineEmits(['update:data', 'update:isValid']);
 
 watch(() => props.data, () => validate());
+
+onMounted(() => validate());
 
 function validate() {
     errorMessage.value = ''
