@@ -1,22 +1,49 @@
 <script setup lang="ts">
-import { computed } from "vue";
+import { watch, type PropType } from "vue";
+import { validateCPF } from "@/helpers/validation";
 
+type BaseInputType = 'cpf' | 'date' | 'text';
 const props = defineProps({
-    modelValue: String,
-    value: String,
-    label: String,
+    data: {
+        type: String,
+        required: true,
+    },
+    isValid: {
+        type: Boolean,
+        default: true
+    },
+    label: {
+        type: String,
+        required: true,
+    },
+    isRequired: {
+        type: Boolean,
+        default: false,
+    },
+    type: {
+        type: String as PropType<BaseInputType>,
+        default: 'text'
+    }
 });
-const emit = defineEmits(['update:modelValue'])
-const model = computed({
-    get: () => props.modelValue,
-    set: (value) => emit("update:modelValue", value),
-});
+
+const emit = defineEmits(['update:data', 'update:isValid']);
+
+watch(() => props.data, () => validate());
+
+function validate() {
+    if (props.isRequired) return emit('update:isValid', !!props.data);
+    if (props.type === 'cpf') return emit('update:isValid', validateCPF(props.data));
+}
+
+const maxLength = props.type === 'cpf' ? 14 : Infinity;
+
 </script>
 
 <template>
-    <div class="input-wrapper">
+    <div :class="['input-wrapper', { 'is-invalid': !isValid }]">
         <span>{{ label }}</span>
-        <input type="text" :placeholder="label" v-model="model" />
+        <input type="text" :placeholder="label" :value="data" @input="$event => $emit('update:data', $event.target.value)"
+            :maxlength="maxLength" />
     </div>
 </template>
 
@@ -43,6 +70,16 @@ div.input-wrapper {
 
         &:focus {
             outline: none;
+        }
+    }
+
+    &.is-invalid {
+        span {
+            color: red;
+        }
+
+        input {
+            border-color: red;
         }
     }
 }
