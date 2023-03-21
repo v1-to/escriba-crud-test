@@ -11,10 +11,13 @@ store.list();
 const { items } = storeToRefs(store)
 
 function update({ id }: Person) {
-    router.push({ name: 'person-details', params: { id } })
+    router.push({ name: 'person-update', params: { id } })
 }
 function remove(person: Person) {
     store.remove(person).then(() => store.list())
+}
+function add() {
+    router.push({ name: 'person-create', params: { id: NaN } })
 }
 </script>
 
@@ -22,7 +25,7 @@ function remove(person: Person) {
     <main>
         <BaseViewTitle label="Lista de Pessoas"></BaseViewTitle>
         <BaseTable :items="items" :fields="['id', 'nome', 'cpf', 'dataNascimento']"
-            :labels="['ID', 'Nome', 'CPF', 'DATA DE NASCIMENTO']" :canDelete="true" :canUpdate="true" @update="update"
-            @remove="remove" />
+            :labels="['ID', 'Nome', 'CPF', 'DATA DE NASCIMENTO']" :canDelete="true" :canUpdate="true" :canAdd="true"
+            @update="update" @remove="remove" @add="add" />
     </main>
 </template>

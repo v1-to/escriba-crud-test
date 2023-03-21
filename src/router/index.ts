@@ -11,12 +11,17 @@ const router = createRouter({
     },
     {
       path: '/person',
-      name: 'person',
+      name: 'person-list',
       component: () => import('../views/PersonView.vue')
     },
     {
+      path: '/person/create',
+      name: 'person-create',
+      component: () => import('../views/PersonFormView.vue')
+    },
+    {
       path: '/person/:id',
-      name: 'person-details',
+      name: 'person-update',
       component: () => import('../views/PersonFormView.vue')
     },
     {

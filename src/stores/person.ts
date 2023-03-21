@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import $http from '../api'
 
 export type Person = {
-  id: number
+  id?: number
   nome: string
   cpf: string
   dataNascimento: string

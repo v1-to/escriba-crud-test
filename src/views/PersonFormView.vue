@@ -7,7 +7,7 @@ import BaseViewTitle from '@/components/BaseViewTitle.vue';
 const route = useRoute();
 
 const title = computed(() => {
-    if (route.params.id) return 'Editar Pessoa';
+    if (route.params.id && !isNaN(Number(route.params.id))) return 'Editar Pessoa';
     return 'Adicionar Pessoa';
 })
 </script>
