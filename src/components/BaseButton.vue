@@ -7,6 +7,10 @@ defineProps({
     color: {
         type: String,
         default: 'lightgray'
+    },
+    disabled: {
+        type: Boolean,
+        default: false
     }
 })
 
@@ -14,7 +18,8 @@ defineEmits(['click'])
 </script>
 
 <template>
-    <button type="button" class="button" :style="{ backgroundColor: color }" @click.stop="$emit('click')">
+    <button type="button" class="button" :style="{ backgroundColor: color }" @click.stop="$emit('click')"
+        :disabled="disabled">
         <span>{{ label }}</span>
     </button>
 </template>
@@ -31,6 +36,10 @@ button.button {
     span {
         color: white;
         font-weight: bold;
+    }
+
+    &:disabled {
+        filter: opacity(0.5);
     }
 }
 </style>
