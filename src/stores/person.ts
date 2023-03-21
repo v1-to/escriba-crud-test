@@ -14,9 +14,11 @@ const RESOURCE_PATH = '/pessoas'
 export const usePersonStore = defineStore('person', () => {
   const items = ref<Person[]>([])
 
-  async function list(): Promise<Person[]> {
+  async function list(filter: Partial<Person> = {}): Promise<Person[]> {
     try {
-      const { data } = await $http.get<Person[]>(RESOURCE_PATH)
+      const { data } = await $http.get<Person[]>(RESOURCE_PATH, {
+        params: { ...filter }
+      })
       items.value = data
       return data
     } catch (err) {
