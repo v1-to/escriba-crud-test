@@ -15,6 +15,10 @@ const form: Person = reactive({
     cpf: '',
     dataNascimento: '',
 })
+const formValidation: Record<keyof Pick<Person, 'cpf' | 'nome'>, boolean> = reactive({
+    nome: false,
+    cpf: false,
+})
 
 onMounted(() => {
     if (route.params.id)
@@ -34,10 +38,11 @@ function cancel() {
 </script>
 
 <template>
-    <BaseForm @cancel="cancel" @confirm="submit">
-        <BaseInput v-model="form.nome" label="Nome"></BaseInput>
-        <BaseInput v-model="form.cpf" label="CPF"></BaseInput>
-        <BaseInput v-model="form.dataNascimento" label="Data de Nascimento"></BaseInput>
+    <BaseForm @cancel="cancel" @confirm="submit" :canSubmit="formValidation.nome && formValidation.cpf">
+        <BaseInput v-model:data="form.nome" v-model:isValid="formValidation.nome" label="Nome" type="text"
+            :isRequired="true"></BaseInput>
+        <BaseInput v-model:data="form.cpf" v-model:isValid="formValidation.cpf" label="CPF" type="cpf"></BaseInput>
+        <BaseInput v-model:data="form.dataNascimento" label="Data de Nascimento" type="date"></BaseInput>
     </BaseForm>
 </template>
 
