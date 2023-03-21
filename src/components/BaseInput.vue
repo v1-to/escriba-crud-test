@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { watch, type PropType } from "vue";
+import { ref, watch, type PropType } from "vue";
 import { validateCPF } from "@/helpers/validation";
+
+const errorMessage = ref('');
 
 type BaseInputType = 'cpf' | 'date' | 'text';
 const props = defineProps({
@@ -31,8 +33,16 @@ const emit = defineEmits(['update:data', 'update:isValid']);
 watch(() => props.data, () => validate());
 
 function validate() {
-    if (props.isRequired) return emit('update:isValid', !!props.data);
-    if (props.type === 'cpf') return emit('update:isValid', validateCPF(props.data));
+    errorMessage.value = ''
+    if (props.isRequired) {
+        if (!props.data) errorMessage.value = 'O campo é obrigatório';
+        return emit('update:isValid', !!props.data);
+    }
+    if (props.type === 'cpf') {
+        const isCPFOk = validateCPF(props.data);
+        if (!isCPFOk) errorMessage.value = 'CPF inválido';
+        return emit('update:isValid', isCPFOk);
+    }
 }
 
 const maxLength = props.type === 'cpf' ? 14 : Infinity;
@@ -42,6 +52,7 @@ const maxLength = props.type === 'cpf' ? 14 : Infinity;
 <template>
     <div :class="['input-wrapper', { 'is-invalid': !isValid }]">
         <span>{{ label }}</span>
+        <span v-if="errorMessage" class="error-message">({{ errorMessage }})</span>
         <input type="text" :placeholder="label" :value="data" @input="$event => $emit('update:data', $event.target.value)"
             :maxlength="maxLength" />
     </div>
@@ -50,12 +61,17 @@ const maxLength = props.type === 'cpf' ? 14 : Infinity;
 <style scoped lang="scss">
 div.input-wrapper {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
     align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 
     span {
         font-size: 12px;
+
+        &.error-message {
+            margin-left: 5px;
+        }
     }
 
     input {
