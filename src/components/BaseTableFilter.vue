@@ -3,6 +3,7 @@ import BaseInput from '@/components/BaseInput.vue';
 import BaseButton from '@/components/BaseButton.vue';
 import BaseSelect, { type SelectItem } from '@/components/BaseSelect.vue';
 import { ref, type PropType } from 'vue';
+import { HexLightColorEnum } from '@/helpers/color';
 
 defineProps({
     fields: {
@@ -24,8 +25,8 @@ function filter() {
     <div class="filter-wrapper">
         <BaseSelect :options="fields" v-model:selected="selected" label="Filtrar pela coluna"></BaseSelect>
         <BaseInput v-model:data="data" label="Busca"></BaseInput>
-        <BaseButton label="Filtrar" color="#84dcc6" @click="filter"></BaseButton>
-        <BaseButton label="Limpar" @click="$emit('reset')"></BaseButton>
+        <BaseButton label="Filtrar" :color="HexLightColorEnum.BLUE" @click="filter"></BaseButton>
+        <BaseButton label="Limpar" :color="HexLightColorEnum.YELLOW" @click="$emit('reset')"></BaseButton>
     </div>
 </template>
 

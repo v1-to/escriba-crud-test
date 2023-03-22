@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { HexLightColorEnum } from '@/helpers/color';
 import BaseButton from './BaseButton.vue'
 
 defineProps({
@@ -40,8 +41,10 @@ defineEmits(['update', 'remove', 'add'])
         <tr v-for="(item, index) in items" :key="index">
             <td v-for="(field, index) in fields" :key="index">{{ item[field] }}</td>
             <td v-if="canDelete || canUpdate" class="options">
-                <BaseButton v-if="canUpdate" label="Editar" color="#9DCAEB" @click="$emit('update', item)" />
-                <BaseButton v-if="canDelete" label="Excluir" color="#ff686b" @click="$emit('remove', item)" />
+                <BaseButton v-if="canUpdate" label="Editar" :color="HexLightColorEnum.BLUE"
+                    @click="$emit('update', item)" />
+                <BaseButton v-if="canDelete" label="Excluir" :color="HexLightColorEnum.RED"
+                    @click="$emit('remove', item)" />
             </td>
         </tr>
         <tr>

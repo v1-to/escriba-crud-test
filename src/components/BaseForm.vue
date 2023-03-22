@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import BaseButton from '@/components/BaseButton.vue';
+import { HexLightColorEnum } from '@/helpers/color';
 
 defineProps({
     canSubmit: {
@@ -15,8 +16,9 @@ defineEmits(['cancel', 'confirm'])
     <form>
         <slot></slot>
         <div class="options">
-            <BaseButton label="Cancelar" color="#ff686b" @click="$emit('cancel')"></BaseButton>
-            <BaseButton label="Confirmar" color="#84dcc6" @click="$emit('confirm')" :disabled="!canSubmit"></BaseButton>
+            <BaseButton label="Cancelar" :color="HexLightColorEnum.RED" @click="$emit('cancel')"></BaseButton>
+            <BaseButton label="Confirmar" :color="HexLightColorEnum.GREEN" @click="$emit('confirm')" :disabled="!canSubmit">
+            </BaseButton>
         </div>
     </form>
 </template>
