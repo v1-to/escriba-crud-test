@@ -4,7 +4,7 @@
 
 - É necessário ter o Docker e o Docker Composen instalado na máquina
 - A aplicação roda na porta 4173
-- Lembre de conferir a url da api caso rode esteja rodando de uma forma diferente
+- Lembre de conferir a url da api (que está no arquivo .env do projeto) caso rode esteja rodando de uma forma diferente
 
 ```sh
 docker compose up
