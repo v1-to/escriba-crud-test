@@ -4,10 +4,10 @@ import { validateCPF } from "@/helpers/validation";
 
 const errorMessage = ref('');
 
-type BaseInputType = 'cpf' | 'date' | 'text';
+type BaseInputType = 'cpf' | 'text' | 'date' | 'number';
 const props = defineProps({
     data: {
-        type: String,
+        type: [String, Number],
         required: true,
     },
     isValid: {
@@ -41,13 +41,16 @@ function validate() {
         return emit('update:isValid', !!props.data);
     }
     if (props.type === 'cpf') {
-        const isCPFOk = validateCPF(props.data);
+        const isCPFOk = validateCPF(props.data as string);
         if (!isCPFOk) errorMessage.value = 'CPF inválido';
         return emit('update:isValid', isCPFOk);
     }
+    return emit('update:isValid', true);
 }
 
 const maxLength = props.type === 'cpf' ? 14 : Infinity;
+
+const inputType = props.type === 'cpf' ? 'text' : props.type;
 
 </script>
 
@@ -55,7 +58,7 @@ const maxLength = props.type === 'cpf' ? 14 : Infinity;
     <div :class="['input-wrapper', { 'is-invalid': !isValid }]">
         <span>{{ label }}</span>
         <span v-if="errorMessage" class="error-message">({{ errorMessage }})</span>
-        <input type="text" :placeholder="label" :value="data"
+        <input :type="inputType" :placeholder="label" :value="data"
             @input="$event => $emit('update:data', ($event.target as HTMLInputElement).value)" :maxlength="maxLength" />
     </div>
 </template>

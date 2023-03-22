@@ -15,3 +15,4 @@ docker compose up
 - Um dos bônus seria o uso do VueX, mas como estou acostumado a utilizar do Pinia e a própria documentação do VueX encoraja o uso do Pinia, segui com ela
 - Como não foi citado nada sobre poder utilizar de outras dependencias optei por fazer tudo e não usar de coisas prontas como modal e validação de formulários (exceto o Vue Router e Pinia)
 - Como o prazo de 3 dias é um pouco apertado, optei por improvisar em alguns pontos (para não perder tempo com planejamento excessivo) e refatorar posteriormente
+- Os produtos estão com o campo valoUnitario ao invés de valorUnitario (mantive como estava)

@@ -1,4 +1,4 @@
-import { HexLightColorEnum } from '@/helpers/color'
+import { ToastColorThemeEnum } from '@/helpers/color'
 import { useUIStore } from '@/stores/ui'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
@@ -25,7 +25,7 @@ export const usePersonStore = defineStore('person', () => {
       items.value = data
       return data
     } catch (err) {
-      uiStore.openToast('Erro ao fazer a listagem dos itens', HexLightColorEnum.RED)
+      uiStore.openToast('Erro ao fazer a listagem dos itens', ToastColorThemeEnum.DANGER)
       items.value = []
       return []
     }
@@ -36,7 +36,7 @@ export const usePersonStore = defineStore('person', () => {
       const { data } = await $http.get<Person>([RESOURCE_PATH, Number(id)].join('/'))
       return data
     } catch (err) {
-      uiStore.openToast('Erro ao trazer o item', HexLightColorEnum.RED)
+      uiStore.openToast('Erro ao trazer o item', ToastColorThemeEnum.DANGER)
       return undefined
     }
   }
@@ -45,7 +45,7 @@ export const usePersonStore = defineStore('person', () => {
     try {
       await $http.post<void>(RESOURCE_PATH, person)
     } catch (err) {
-      uiStore.openToast('Erro ao inserir o item', HexLightColorEnum.RED)
+      uiStore.openToast('Erro ao inserir o item', ToastColorThemeEnum.DANGER)
     }
   }
 
@@ -53,7 +53,7 @@ export const usePersonStore = defineStore('person', () => {
     try {
       await $http.put<void>([RESOURCE_PATH, id].join('/'), fields)
     } catch (err) {
-      uiStore.openToast('Erro ao atualizar o item', HexLightColorEnum.RED)
+      uiStore.openToast('Erro ao atualizar o item', ToastColorThemeEnum.DANGER)
     }
   }
 
@@ -61,7 +61,7 @@ export const usePersonStore = defineStore('person', () => {
     try {
       await $http.delete<void>([RESOURCE_PATH, id].join('/'))
     } catch (err) {
-      uiStore.openToast('Erro ao excluir o item', HexLightColorEnum.RED)
+      uiStore.openToast('Erro ao excluir o item', ToastColorThemeEnum.DANGER)
     }
   }
 

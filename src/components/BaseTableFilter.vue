@@ -26,7 +26,8 @@ function filter() {
         <BaseSelect :options="fields" v-model:selected="selected" label="Filtrar pela coluna"></BaseSelect>
         <BaseInput v-model:data="data" label="Busca"></BaseInput>
         <BaseButton label="Filtrar" :color="HexLightColorEnum.BLUE" @click="filter"></BaseButton>
-        <BaseButton label="Limpar" :color="HexLightColorEnum.YELLOW" @click="$emit('reset')"></BaseButton>
+        <BaseButton label="Limpar" labelColor="black" @click="$emit('reset')">
+        </BaseButton>
     </div>
 </template>
 
