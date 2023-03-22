@@ -43,6 +43,7 @@ export const useProductStore = defineStore('product', () => {
   async function create(product: Product): Promise<void> {
     try {
       await $http.post<void>(RESOURCE_PATH, product)
+      uiStore.openToast('Item inserido com sucesso', ToastColorThemeEnum.SUCCESS)
     } catch (err) {
       uiStore.openToast('Erro ao inserir o item', ToastColorThemeEnum.DANGER)
     }
@@ -51,6 +52,7 @@ export const useProductStore = defineStore('product', () => {
   async function update({ id, ...fields }: Product): Promise<void> {
     try {
       await $http.put<void>([RESOURCE_PATH, id].join('/'), fields)
+      uiStore.openToast('Item atualizado com sucesso', ToastColorThemeEnum.SUCCESS)
     } catch (err) {
       uiStore.openToast('Erro ao atualizar o item', ToastColorThemeEnum.DANGER)
     }
@@ -59,6 +61,7 @@ export const useProductStore = defineStore('product', () => {
   async function remove({ id }: Product): Promise<void> {
     try {
       await $http.delete<void>([RESOURCE_PATH, id].join('/'))
+      uiStore.openToast('Item removido com sucesso', ToastColorThemeEnum.SUCCESS)
     } catch (err) {
       uiStore.openToast('Erro ao excluir o item', ToastColorThemeEnum.DANGER)
     }

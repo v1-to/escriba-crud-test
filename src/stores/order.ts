@@ -57,6 +57,7 @@ export const useOrderStore = defineStore('order', () => {
   async function create(order: Order): Promise<void> {
     try {
       await $http.post<void>(RESOURCE_PATH, order)
+      uiStore.openToast('Item inserido com sucesso', ToastColorThemeEnum.SUCCESS)
     } catch (err) {
       uiStore.openToast('Erro ao inserir o item', ToastColorThemeEnum.DANGER)
     }
@@ -65,6 +66,7 @@ export const useOrderStore = defineStore('order', () => {
   async function update({ id, ...fields }: Order): Promise<void> {
     try {
       await $http.put<void>([RESOURCE_PATH, id].join('/'), fields)
+      uiStore.openToast('Item atualizado com sucesso', ToastColorThemeEnum.SUCCESS)
     } catch (err) {
       uiStore.openToast('Erro ao atualizar o item', ToastColorThemeEnum.DANGER)
     }
@@ -73,6 +75,7 @@ export const useOrderStore = defineStore('order', () => {
   async function remove({ id }: Order): Promise<void> {
     try {
       await $http.delete<void>([RESOURCE_PATH, id].join('/'))
+      uiStore.openToast('Item removido com sucesso', ToastColorThemeEnum.SUCCESS)
     } catch (err) {
       uiStore.openToast('Erro ao excluir o item', ToastColorThemeEnum.DANGER)
     }
