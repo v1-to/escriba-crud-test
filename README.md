@@ -1,5 +1,7 @@
 # CRUD Test Escriba
 
+- A aplicação está temporariamente hospedada publicamente acessível em http://18.228.58.33:4173/
+
 ## Como Rodar
 
 - É necessário ter o Docker e o Docker Composen instalado na máquina
@@ -18,3 +20,4 @@ docker compose up
 - Os produtos estão com o campo valoUnitario ao invés de valorUnitario (mantive como estava)
 - Não fiz o projeto pensando no mobile-first mas resolvi algumas quebras da responsividade
 - Tenho certeza que seja possível aplicar o DRY nas stores criando uma store base para operações de CRUD, só precisaria de mais planejamento e implementação
+- Tentei implementar os pedidos mas sem muito sucesso, deixei apenas a listagem
