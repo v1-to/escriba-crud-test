@@ -9,11 +9,11 @@ const store = useOrderStore();
 const route = useRoute()
 const router = useRouter()
 
-const form: Order = reactive({
+/*const form: Order = reactive({
     id: undefined,
 })
-/*const formValidation: Record<keyof Pick<Order, 'id' | 'nome'>, boolean> = reactive({
-})*/
+const formValidation: Record<keyof Pick<Order, 'id' | 'nome'>, boolean> = reactive({
+})
 
 onMounted(() => {
     if (route.params.id)
@@ -21,10 +21,10 @@ onMounted(() => {
             Object.assign(form, res)
         })
 })
-
+*/
 function submit() {
-    if (route.params.id) store.update(form).then(() => router.push({ name: 'order-list' }))
-    else store.create(form).then(() => router.push({ name: 'order-list' }))
+    //if (route.params.id) store.update(form).then(() => router.push({ name: 'order-list' }))
+    //else store.create(form).then(() => router.push({ name: 'order-list' }))
 }
 
 function cancel() {

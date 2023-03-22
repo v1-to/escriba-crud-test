@@ -3,5 +3,7 @@ services:
   vue-app:
     build: .
     image: escriba-crud-test
+    env_file:
+      - .env
     ports:
       - "4173:4173"
