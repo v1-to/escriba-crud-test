@@ -60,6 +60,7 @@ export const useOrderStore = defineStore('order', () => {
       uiStore.openToast('Item inserido com sucesso', ToastColorThemeEnum.SUCCESS)
     } catch (err) {
       uiStore.openToast('Erro ao inserir o item', ToastColorThemeEnum.DANGER)
+      throw err
     }
   }
 
@@ -69,6 +70,7 @@ export const useOrderStore = defineStore('order', () => {
       uiStore.openToast('Item atualizado com sucesso', ToastColorThemeEnum.SUCCESS)
     } catch (err) {
       uiStore.openToast('Erro ao atualizar o item', ToastColorThemeEnum.DANGER)
+      throw err
     }
   }
 
@@ -78,6 +80,7 @@ export const useOrderStore = defineStore('order', () => {
       uiStore.openToast('Item removido com sucesso', ToastColorThemeEnum.SUCCESS)
     } catch (err) {
       uiStore.openToast('Erro ao excluir o item', ToastColorThemeEnum.DANGER)
+      throw err
     }
   }
 
