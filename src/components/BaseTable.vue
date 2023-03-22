@@ -33,53 +33,59 @@ defineEmits(['update', 'remove', 'add'])
 </script>
 
 <template>
-    <table>
-        <tr>
-            <th v-for="(_, index) in fields" :key="index"> {{ labels[index] }}</th>
-            <th v-if="canDelete || canUpdate">OPÇÕES</th>
-        </tr>
-        <tr v-for="(item, index) in items" :key="index">
-            <td v-for="(field, index) in fields" :key="index">{{ item[field] }}</td>
-            <td v-if="canDelete || canUpdate" class="options">
-                <BaseButton v-if="canUpdate" label="Editar" :color="HexLightColorEnum.BLUE"
-                    @click="$emit('update', item)" />
-                <BaseButton v-if="canDelete" label="Excluir" :color="HexLightColorEnum.RED"
-                    @click="$emit('remove', item)" />
-            </td>
-        </tr>
-        <tr>
+    <div class="table-wrapper">
+        <table>
+            <tr>
+                <th v-for="(_, index) in fields" :key="index"> {{ labels[index] }}</th>
+                <th v-if="canDelete || canUpdate">OPÇÕES</th>
+            </tr>
+            <tr v-for="(item, index) in items" :key="index">
+                <td v-for="(field, index) in fields" :key="index">{{ item[field] }}</td>
+                <td v-if="canDelete || canUpdate" class="options">
+                    <BaseButton v-if="canUpdate" label="Editar" :color="HexLightColorEnum.BLUE"
+                        @click="$emit('update', item)" />
+                    <BaseButton v-if="canDelete" label="Excluir" :color="HexLightColorEnum.RED"
+                        @click="$emit('remove', item)" />
+                </td>
+            </tr>
+            <tr>
 
-        </tr>
-    </table>
+            </tr>
+        </table>
+    </div>
     <div class="add-new">
         <BaseButton v-if="canAdd" label="+ Adicionar Novo" @click="$emit('add')" />
     </div>
 </template>
 
 <style scoped lang="scss">
-table {
-    width: 100%;
+div.table-wrapper {
+    overflow-x: auto;
 
-    th,
-    td {
-        text-align: center;
-        border: 1px solid gray;
-        padding: 5px;
+    table {
+        width: 100%;
 
-        :deep(button.button) {
-            margin: 0 10px;
+        th,
+        td {
+            text-align: center;
+            border: 1px solid gray;
+            padding: 5px;
+
+            :deep(button.button) {
+                margin: 0 10px;
+            }
         }
-    }
 
-    th {
-        background-color: #2c3e50;
-        color: white;
+        th {
+            background-color: #2c3e50;
+            color: white;
+        }
     }
 }
 
 div.add-new {
     width: 100%;
-    margin-top: 20px;
+    margin-top: 10px;
 
     :deep(button.button) {
         width: 100%;

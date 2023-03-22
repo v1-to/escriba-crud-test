@@ -30,7 +30,7 @@ button.button {
     border-radius: 8px;
     cursor: pointer;
     overflow: hidden;
-    padding: 0.75em 2em;
+    padding: 5px 10px;
     text-transform: lowercase;
 
     span {

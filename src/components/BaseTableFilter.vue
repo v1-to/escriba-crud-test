@@ -36,6 +36,7 @@ div.filter-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    flex-wrap: wrap;
 
     :deep(div.select-wrapper),
     :deep(div.input-wrapper) {
@@ -45,6 +46,36 @@ div.filter-wrapper {
     :deep(button.button) {
         width: 8%;
         height: 3rem;
+    }
+}
+
+@media only screen and (max-width: 920px) {
+    div.filter-wrapper {
+
+        :deep(div.select-wrapper),
+        :deep(div.input-wrapper),
+        :deep(button.button) {
+            width: 49%;
+        }
+
+        :deep(button.button) {
+            margin-top: 5px;
+        }
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    div.filter-wrapper {
+
+        :deep(div.select-wrapper),
+        :deep(div.input-wrapper) {
+            width: 100%;
+        }
+
+        :deep(button.button) {
+            width: 49%;
+            margin-top: 5px;
+        }
     }
 }
 </style>

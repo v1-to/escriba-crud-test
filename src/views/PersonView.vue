@@ -39,7 +39,7 @@ function filter(value: Partial<Person>) {
         <BaseViewTitle label="Lista de Pessoas"></BaseViewTitle>
         <BaseTableFilter :fields="fields" @filter="filter" @reset="store.list()"></BaseTableFilter>
         <BaseTable :items="items" :fields="['id', 'nome', 'cpf', 'dataNascimento']"
-            :labels="['ID', 'Nome', 'CPF', 'DATA DE NASCIMENTO']" :canDelete="true" :canUpdate="true" :canAdd="true"
+            :labels="['ID', 'NOME', 'CPF', 'DATA DE NASCIMENTO']" :canDelete="true" :canUpdate="true" :canAdd="true"
             @update="update" @remove="remove" @add="add" />
     </main>
 </template>

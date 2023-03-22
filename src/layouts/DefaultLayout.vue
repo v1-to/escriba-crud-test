@@ -18,16 +18,20 @@ div.screen {
     height: 100vh;
     width: 100vw;
 
-    nav {
-        height: 100vh;
-        width: 15vw;
-        background-color: #f2f2f2;
-    }
-
     div.content {
         width: 85vw;
         height: 100vh;
         padding: 20px;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    div.screen {
+        flex-direction: column;
+
+        div.content {
+            width: 100vw;
+        }
     }
 }
 </style>
