@@ -6,4 +6,16 @@ services:
     env_file:
       - .env
     ports:
-      - "4173:4173"
+      - 4173:4173
+    depends_on:
+      - json-server-api
+
+  json-server-api:
+    image: json-server-image
+    command: json-server --watch /data/data.json --host 0.0.0.0
+    build: ./api
+    ports:
+      - 3000:3000
+    volumes:
+      - ./api/data.json:/data/data.json
+    restart: always
