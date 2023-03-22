@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { HexLightColorEnum } from '@/helpers/color';
+import { accessInnerProperty } from '@/helpers/utils'
 import BaseButton from './BaseButton.vue'
 
 defineProps({
@@ -40,7 +41,7 @@ defineEmits(['update', 'remove', 'add'])
                 <th v-if="canDelete || canUpdate">OPÇÕES</th>
             </tr>
             <tr v-for="(item, index) in items" :key="index">
-                <td v-for="(field, index) in fields" :key="index">{{ item[field] }}</td>
+                <td v-for="(field, index) in fields" :key="index">{{ accessInnerProperty(field, item) }}</td>
                 <td v-if="canDelete || canUpdate" class="options" width="190px">
                     <BaseButton v-if="canUpdate" label="Editar" :color="HexLightColorEnum.BLUE"
                         @click="$emit('update', item)" />
@@ -51,7 +52,7 @@ defineEmits(['update', 'remove', 'add'])
         </table>
     </div>
     <div class="add-new">
-        <BaseButton v-if="canAdd" label="+ Adicionar Novo" @click="$emit('add')" />
+        <BaseButton v-if="canAdd" label="+ Adicionar Novo" :color="HexLightColorEnum.GREEN" @click="$emit('add')" />
     </div>
 </template>
 
@@ -83,9 +84,7 @@ div.table-wrapper {
 div.add-new {
     width: 100%;
     margin-top: 10px;
-
-    :deep(button.button) {
-        width: 100%;
-    }
+    display: flex;
+    justify-content: center;
 }
 </style>

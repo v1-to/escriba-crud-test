@@ -17,3 +17,4 @@ docker compose up
 - Como o prazo de 3 dias é um pouco apertado, optei por improvisar em alguns pontos (para não perder tempo com planejamento excessivo) e refatorar posteriormente
 - Os produtos estão com o campo valoUnitario ao invés de valorUnitario (mantive como estava)
 - Não fiz o projeto pensando no mobile-first mas resolvi algumas quebras da responsividade
+- Tenho certeza que seja possível aplicar o DRY nas stores criando uma store base para operações de CRUD, só precisaria de mais planejamento e implementação

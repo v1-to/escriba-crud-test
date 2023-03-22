@@ -5,9 +5,6 @@ import { computed, ref } from 'vue';
 const menuOpen = ref(false);
 const menuText = computed(() => menuOpen.value ? "X" : "MENU");
 
-function test() {
-    console.log('TEST')
-}
 </script>
 
 <template>
