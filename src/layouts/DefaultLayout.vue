@@ -23,7 +23,6 @@ div.screen {
         width: 85vw;
         padding: 20px;
         height: fit-content;
-        min-height: 100vh;
     }
 }
 
