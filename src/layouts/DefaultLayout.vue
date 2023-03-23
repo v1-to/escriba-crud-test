@@ -17,11 +17,13 @@ div.screen {
     flex-direction: row;
     height: 100vh;
     width: 100vw;
+    overflow-y: scroll;
 
     div.content {
         width: 85vw;
-        height: 100vh;
         padding: 20px;
+        height: fit-content;
+        min-height: 100vh;
     }
 }
 
